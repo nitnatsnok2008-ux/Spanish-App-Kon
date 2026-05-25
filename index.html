@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Learn Spanish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇪🇸</text></svg>" />
+</head>
+<body>
+  <!-- ============ SPLASH ============ -->
+  <div id="splash" class="splash">
+    <div class="splash-logo">
+      <div class="splash-flag">🇪🇸</div>
+      <h1 class="splash-title">Learn&nbsp;Spanish</h1>
+      <p class="splash-sub">Español de España · paso a paso</p>
+    </div>
+    <div class="splash-spinner"></div>
+  </div>
+
+  <!-- ============ APP SHELL ============ -->
+  <div id="app" class="app hidden">
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <button class="icon-btn" id="backBtn" aria-label="Zurück" hidden>
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="topbar-title" id="topbarTitle">Learn Spanish</div>
+      <div class="topbar-stats">
+        <span class="stat streak" id="streakStat" title="Streak">🔥 <b id="streakVal">0</b></span>
+        <span class="stat xp" id="xpStat" title="Erfahrung">⭐ <b id="xpVal">0</b></span>
+      </div>
+    </header>
+
+    <!-- Main scroll area -->
+    <main class="main" id="main"></main>
+
+    <!-- Bottom navigation -->
+    <nav class="tabbar" id="tabbar">
+      <button class="tab active" data-tab="learn">
+        <svg viewBox="0 0 24 24"><path d="M4 19V6a2 2 0 012-2h7l2 2h3a2 2 0 012 2v9a2 2 0 01-2 2H6a2 2 0 01-2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <span>Lernen</span>
+      </button>
+      <button class="tab" data-tab="practice">
+        <svg viewBox="0 0 24 24"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5L12 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <span>Üben</span>
+      </button>
+      <button class="tab" data-tab="chat">
+        <svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4V5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <span>Tutor</span>
+      </button>
+      <button class="tab" data-tab="profile">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span>Profil</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts (classic scripts so the app opens directly via file:// in Brave) -->
+  <script src="js/audio.js"></script>
+  <script src="js/speech.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/exercises.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
