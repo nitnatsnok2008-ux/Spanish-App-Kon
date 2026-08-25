@@ -1,14 +1,10 @@
 {
-  "name": "learn-spanish",
+  "name": "gym-tracker",
   "version": "1.0.0",
-  "description": "Learn Spanish — eine browserbasierte App zum Lernen von Spanisch aus Spanien (visuelles Lernen, Vokabeln, Hören, Lesen, Schreiben, Spiele, Sprechen & KI-Tutor).",
+  "description": "Gym Tracker — eine browserbasierte App zum Verfolgen von Trainingseinheiten, Übungen und Fortschritt.",
   "private": true,
   "scripts": {
     "start": "python3 -m http.server 8123",
-    "serve": "python3 -m http.server 8123",
-    "test": "node test/smoke.js"
-  },
-  "devDependencies": {
-    "jsdom": "^24.0.0"
+    "serve": "python3 -m http.server 8123"
   }
 }
