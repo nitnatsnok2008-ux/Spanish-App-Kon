@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="theme-color" content="#000000">
+<title>Pulse — Gym &amp; Ernährung</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="app" id="app">
+
+  <!-- ===== HOME ===== -->
+  <section class="view" id="view-home" data-view="home">
+    <header class="topbar">
+      <button class="icon-pill" id="menuBtn" aria-label="Menü">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="greeting">
+        <span class="greeting-sub" id="greetingTime">Guten Morgen</span>
+        <h1 id="greetingName">Hey, Champ 👋</h1>
+      </div>
+      <button class="avatar" id="avatarBtn" aria-label="Profil">P</button>
+    </header>
+
+    <div class="scroll-area">
+      <div class="hero-card fade-in" id="heroWorkoutCard">
+        <div class="hero-glow"></div>
+        <div class="hero-top">
+          <span class="chip chip-ghost" id="heroDayLabel">Heute · Montag</span>
+        </div>
+        <h2 id="heroWorkoutTitle">Push Day</h2>
+        <p id="heroWorkoutSub">5 Übungen · ca. 45 Min</p>
+        <button class="btn btn-primary" id="startWorkoutBtn">
+          <span>Training starten</span>
+          <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+
+      <div class="stat-row fade-in delay-1">
+        <div class="stat-card">
+          <div class="ring" id="ringCalories" style="--p:0"><span id="statCaloriesVal">0</span></div>
+          <span class="stat-label">kcal</span>
+        </div>
+        <div class="stat-card">
+          <div class="ring ring-pink" id="ringProtein" style="--p:0"><span id="statProteinVal">0</span></div>
+          <span class="stat-label">Protein g</span>
+        </div>
+        <div class="stat-card">
+          <div class="ring ring-green" id="ringTasks" style="--p:0"><span id="statTasksVal">0/0</span></div>
+          <span class="stat-label">Aufgaben</span>
+        </div>
+      </div>
+
+      <div class="section-header fade-in delay-2">
+        <h3>Heutige Aufgaben</h3>
+        <button class="link-btn" data-nav="tasks">Alle</button>
+      </div>
+      <div class="card-list" id="homeTasksList"></div>
+
+      <div class="section-header fade-in delay-2">
+        <h3>Mahlzeiten heute</h3>
+        <button class="link-btn" data-nav="meals">Alle</button>
+      </div>
+      <div class="card-list" id="homeMealsList"></div>
+
+      <div class="spacer-bottom"></div>
+    </div>
+  </section>
+
+  <!-- ===== TRAINING ===== -->
+  <section class="view hidden" id="view-training" data-view="training">
+    <header class="topbar">
+      <h1 class="view-title">Training</h1>
+      <button class="icon-pill" id="addExerciseBtn" aria-label="Übung hinzufügen">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    </header>
+
+    <div class="day-scroller" id="daySelector"></div>
+
+    <div class="scroll-area">
+      <div class="card-list" id="exerciseList"></div>
+      <div class="spacer-bottom"></div>
+    </div>
+  </section>
+
+  <!-- ===== ERNÄHRUNG ===== -->
+  <section class="view hidden" id="view-meals" data-view="meals">
+    <header class="topbar">
+      <h1 class="view-title">Ernährung</h1>
+      <button class="icon-pill" id="openCalcBtn" aria-label="Rezept-Rechner">
+        <svg viewBox="0 0 24 24"><path d="M7 3h10v4H7zM6 9h12v12H6z"/><path d="M9 13h.01M12 13h.01M15 13h.01M9 17h.01M12 17h.01M15 17h.01"/></svg>
+      </button>
+    </header>
+
+    <div class="scroll-area">
+      <div class="macro-summary fade-in" id="macroSummary"></div>
+
+      <div class="section-header fade-in delay-1">
+        <h3>Mahlzeitenplan</h3>
+      </div>
+      <div class="card-list" id="mealPlanList"></div>
+
+      <div class="section-header fade-in delay-2">
+        <h3>Eigene Rezepte</h3>
+        <button class="link-btn" id="newRecipeBtn">+ Neu</button>
+      </div>
+      <div class="card-list" id="recipeList"></div>
+
+      <div class="spacer-bottom"></div>
+    </div>
+  </section>
+
+  <!-- ===== AUFGABEN ===== -->
+  <section class="view hidden" id="view-tasks" data-view="tasks">
+    <header class="topbar">
+      <h1 class="view-title">Aufgaben</h1>
+    </header>
+
+    <div class="scroll-area">
+      <div class="add-task-row fade-in">
+        <input type="text" id="newTaskInput" placeholder="Neue Aufgabe hinzufügen…" maxlength="80">
+        <button class="icon-pill icon-pill-accent" id="addTaskBtn" aria-label="Hinzufügen">
+          <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+      </div>
+      <div class="card-list" id="tasksList"></div>
+      <div class="spacer-bottom"></div>
+    </div>
+  </section>
+
+  <!-- ===== BOTTOM NAV ===== -->
+  <nav class="tabbar" id="tabbar">
+    <button class="tab active" data-nav="home">
+      <svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg>
+      <span>Home</span>
+    </button>
+    <button class="tab" data-nav="training">
+      <svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M4 9l3-3 2 2-3 3zM15 18l3-3 2 2-3 3zM2 12l2-2 2 2-2 2zM18 8l2-2 2 2-2 2z"/></svg>
+      <span>Training</span>
+    </button>
+    <button class="tab" data-nav="meals">
+      <svg viewBox="0 0 24 24"><path d="M6 3v8a2 2 0 0 0 4 0V3M8 11v10M17 3c-2 1-2 5-2 6a2 2 0 0 0 2 2v9"/></svg>
+      <span>Ernährung</span>
+    </button>
+    <button class="tab" data-nav="tasks">
+      <svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>
+      <span>Aufgaben</span>
+    </button>
+  </nav>
+</div>
+
+<!-- ===== SHEET: Log Exercise ===== -->
+<div class="sheet-backdrop" id="logSheetBackdrop">
+  <div class="sheet" id="logSheet">
+    <div class="sheet-handle"></div>
+    <h3 id="logSheetTitle">Übung protokollieren</h3>
+    <p class="sheet-sub" id="logSheetSub"></p>
+    <div class="set-rows" id="setRows"></div>
+    <button class="btn btn-ghost" id="addSetBtn">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      <span>Satz hinzufügen</span>
+    </button>
+    <button class="btn btn-primary" id="saveLogBtn">Speichern</button>
+  </div>
+</div>
+
+<!-- ===== SHEET: Recipe Calculator ===== -->
+<div class="sheet-backdrop" id="calcSheetBackdrop">
+  <div class="sheet sheet-tall" id="calcSheet">
+    <div class="sheet-handle"></div>
+    <h3>Rezept-Rechner</h3>
+    <p class="sheet-sub">Zutaten hinzufügen &amp; Nährwerte live berechnen</p>
+
+    <div class="ingredient-picker">
+      <select id="ingredientSelect"></select>
+      <input type="number" id="ingredientGrams" placeholder="g" min="1" value="100">
+      <button class="icon-pill icon-pill-accent" id="addIngredientBtn">
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+    </div>
+
+    <div class="ingredient-list" id="calcIngredientList"></div>
+
+    <div class="macro-summary" id="calcMacroSummary"></div>
+
+    <input type="text" id="recipeNameInput" placeholder="Name des Gerichts…" maxlength="40">
+    <div class="meal-slot-picker" id="mealSlotPicker"></div>
+    <button class="btn btn-primary" id="saveRecipeBtn">Als Rezept speichern</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/data.js"></script>
+<script src="js/store.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
